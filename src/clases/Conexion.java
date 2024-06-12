@@ -11,13 +11,14 @@ import java.sql.*;
  */
 public class Conexion {
     
-    public static Connection Conectar(){
-        
+    public static Connection Conectar() {
         try {
-            Connection cn = DriverManager.getConnection("jdbc:mysql://", "root", "3lm3j0rs");
+
+            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/cocoa", "root", "3lm3j0rs");
+            
             return cn;
         } catch (SQLException e) {
-            System.err.println("Error en la Conexion local " + e);
+            System.out.println("Error en conexión local " + e);
         }
         return (null);
     }

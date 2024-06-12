@@ -4,17 +4,28 @@
  */
 package ventanas;
 
+import clases.Conexion;
+import javax.swing.JOptionPane;
+import java.sql.*;
+
 /**
  *
  * @author torut
  */
 public class Login extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Login
-     */
-    public Login() {
+    //Declaracion de variables Globales para enviar datos entre interfaces
+    public static String usuario = "";
+    String contraseña = "";
+    
+    
+        public Login() {
         initComponents();
+        setSize(420, 537);
+        setResizable(false);
+        setTitle("Acceso al Sistema");
+        setLocationRelativeTo(null);
+        
     }
 
     /**
@@ -26,21 +37,96 @@ public class Login extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        buttonGroup1 = new javax.swing.ButtonGroup();
+        jPanel1 = new javax.swing.JPanel();
+        txt_usuario = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        txt_Contraseña = new javax.swing.JPasswordField();
+        btn_Acceder = new javax.swing.JButton();
+        icono_caco = new javax.swing.JLabel();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 470, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 364, Short.MAX_VALUE)
-        );
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setFocusCycleRoot(false);
+        setResizable(false);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel1.setBackground(new java.awt.Color(204, 255, 204));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        txt_usuario.setFont(new java.awt.Font("Segoe UI Emoji", 0, 18)); // NOI18N
+        jPanel1.add(txt_usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 240, 230, -1));
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI Emoji", 0, 18)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("Contraseña:");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 310, -1, -1));
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI Emoji", 0, 18)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Usuario:");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 220, -1, -1));
+
+        txt_Contraseña.setFont(new java.awt.Font("Segoe UI Emoji", 0, 18)); // NOI18N
+        jPanel1.add(txt_Contraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 330, 230, -1));
+
+        btn_Acceder.setBackground(new java.awt.Color(204, 255, 255));
+        btn_Acceder.setFont(new java.awt.Font("Segoe UI Emoji", 0, 18)); // NOI18N
+        btn_Acceder.setText("Acceder");
+        btn_Acceder.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_AccederActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_Acceder, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 400, 160, 40));
+
+        icono_caco.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cacao.png"))); // NOI18N
+        jPanel1.add(icono_caco, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 30, 150, 160));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 420, 540));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btn_AccederActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_AccederActionPerformed
+        
+        usuario = txt_usuario.getText().trim();
+        contraseña = txt_Contraseña.getText().trim();
+        if (!usuario.equals("") || !contraseña.equals("")) {
+
+            try {
+                Connection cn = Conexion.Conectar();
+                PreparedStatement pst = cn.prepareStatement(
+                        "select tipo_nivel, estatus from usuarios where username = '" + usuario
+                        + "' and password = '" + contraseña + "'");
+
+                ResultSet rs = pst.executeQuery();
+                if (rs.next()) {
+
+                    String  tipo_nivel = rs.getString("tipo_nivel");
+                    String estatus = rs.getString("estatus");
+
+                    if (tipo_nivel.equalsIgnoreCase("Administrador") && estatus.equalsIgnoreCase("Activo")) {
+                        //dispose(); Hace que el JFrame sea destruido y limpiado por el sistema operativo.
+                        dispose();
+                        new Administrador().setVisible(true);
+                    }                
+
+                } else {
+                    JOptionPane.showMessageDialog(null, "Datos de acceso incorrectos.");
+                    txt_usuario.setText("");
+                    txt_Contraseña.setText("");
+                }
+
+            } catch (SQLException e) {
+                System.err.println("Error en el botón Acceder." + e);
+                JOptionPane.showMessageDialog(null, "¡¡ERROR al iniciar!!, contacte al administrador.");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Debes llenar todos los campos");
+        }
+        
+    }//GEN-LAST:event_btn_AccederActionPerformed
 
     /**
      * @param args the command line arguments
@@ -78,5 +164,13 @@ public class Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_Acceder;
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JLabel icono_caco;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPasswordField txt_Contraseña;
+    private javax.swing.JTextField txt_usuario;
     // End of variables declaration//GEN-END:variables
 }
