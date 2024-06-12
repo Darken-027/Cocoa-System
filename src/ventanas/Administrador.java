@@ -71,14 +71,29 @@ public class Administrador extends javax.swing.JFrame {
 
         btn_GestionarClientes.setBackground(new java.awt.Color(204, 255, 255));
         btn_GestionarClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/administrar.png"))); // NOI18N
+        btn_GestionarClientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_GestionarClientesActionPerformed(evt);
+            }
+        });
         jPanel1.add(btn_GestionarClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 40, 180, 167));
 
         btn_GestionarUsuarios.setBackground(new java.awt.Color(204, 255, 255));
         btn_GestionarUsuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/administrar (1).png"))); // NOI18N
+        btn_GestionarUsuarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_GestionarUsuariosActionPerformed(evt);
+            }
+        });
         jPanel1.add(btn_GestionarUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 320, 180, 167));
 
         btn_CrearUsuarios.setBackground(new java.awt.Color(204, 255, 255));
         btn_CrearUsuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/agregar-usuario.png"))); // NOI18N
+        btn_CrearUsuarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_CrearUsuariosActionPerformed(evt);
+            }
+        });
         jPanel1.add(btn_CrearUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 320, 180, 167));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI Historic", 1, 18)); // NOI18N
@@ -117,6 +132,21 @@ public class Administrador extends javax.swing.JFrame {
         registrar_Clientes.setVisible(true);
         
     }//GEN-LAST:event_btn_RegistrarClientesActionPerformed
+
+    private void btn_GestionarClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_GestionarClientesActionPerformed
+        Gestionar_Clientes gestionar_Clientes = new Gestionar_Clientes();
+        gestionar_Clientes.setVisible(true);
+    }//GEN-LAST:event_btn_GestionarClientesActionPerformed
+
+    private void btn_CrearUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_CrearUsuariosActionPerformed
+        Crear_Usuarios crear_Usuarios = new Crear_Usuarios();
+        crear_Usuarios.setVisible(true);
+    }//GEN-LAST:event_btn_CrearUsuariosActionPerformed
+
+    private void btn_GestionarUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_GestionarUsuariosActionPerformed
+        Gestionar_Usuarios gestionar_Usuarios = new Gestionar_Usuarios();
+        gestionar_Usuarios.setVisible(true);
+    }//GEN-LAST:event_btn_GestionarUsuariosActionPerformed
 
     /**
      * @param args the command line arguments
