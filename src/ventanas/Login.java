@@ -98,7 +98,7 @@ public class Login extends javax.swing.JFrame {
                 Connection cn = Conexion.Conectar();
                 PreparedStatement pst = cn.prepareStatement(
                         "select tipo_nivel, estatus from usuarios where username = '" + usuario
-                        + "' and password = '" + contraseña + "'");
+                        + "' and contraseña = '" + contraseña + "'");
 
                 ResultSet rs = pst.executeQuery();
                 if (rs.next()) {

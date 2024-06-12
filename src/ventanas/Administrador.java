@@ -4,17 +4,35 @@
  */
 package ventanas;
 
+import java.sql.*;
+import javax.swing.WindowConstants;
+
 /**
  *
  * @author torut
  */
 public class Administrador extends javax.swing.JFrame {
+    
+    String usuario, nombre_usuario;
+    public static int sesion_usuario;
 
     /**
      * Creates new form Administrador
      */
     public Administrador() {
         initComponents();
+        usuario = Login.usuario;
+        sesion_usuario = 1;
+        
+        setSize(651, 546);
+        setResizable(false);
+        setTitle("Administrador - Sesión de " + usuario);
+        setLocationRelativeTo(null);
+        
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        
+        
+        
     }
 
     /**
@@ -26,21 +44,79 @@ public class Administrador extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        btn_RegistrarClientes = new javax.swing.JButton();
+        btn_GestionarClientes = new javax.swing.JButton();
+        btn_GestionarUsuarios = new javax.swing.JButton();
+        btn_CrearUsuarios = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jPanel1.setBackground(new java.awt.Color(204, 255, 204));
+        jPanel1.setEnabled(false);
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btn_RegistrarClientes.setBackground(new java.awt.Color(204, 255, 255));
+        btn_RegistrarClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/anadir-grupo.png"))); // NOI18N
+        btn_RegistrarClientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_RegistrarClientesActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_RegistrarClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 40, 180, 167));
+
+        btn_GestionarClientes.setBackground(new java.awt.Color(204, 255, 255));
+        btn_GestionarClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/administrar.png"))); // NOI18N
+        jPanel1.add(btn_GestionarClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 40, 180, 167));
+
+        btn_GestionarUsuarios.setBackground(new java.awt.Color(204, 255, 255));
+        btn_GestionarUsuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/administrar (1).png"))); // NOI18N
+        jPanel1.add(btn_GestionarUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 320, 180, 167));
+
+        btn_CrearUsuarios.setBackground(new java.awt.Color(204, 255, 255));
+        btn_CrearUsuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/agregar-usuario.png"))); // NOI18N
+        jPanel1.add(btn_CrearUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 320, 180, 167));
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI Historic", 1, 18)); // NOI18N
+        jLabel1.setText("Registrar Clientes");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 220, -1, -1));
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI Historic", 1, 18)); // NOI18N
+        jLabel2.setText("Gestionar Clientes");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 220, -1, -1));
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI Historic", 1, 18)); // NOI18N
+        jLabel3.setText("Crear Usuarios");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 500, -1, -1));
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI Historic", 1, 18)); // NOI18N
+        jLabel4.setText("Gestionar Usuarios");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 500, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 651, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 546, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btn_RegistrarClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_RegistrarClientesActionPerformed
+        
+        Registrar_Clientes registrar_Clientes = new Registrar_Clientes();
+        registrar_Clientes.setVisible(true);
+        
+    }//GEN-LAST:event_btn_RegistrarClientesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -78,5 +154,14 @@ public class Administrador extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_CrearUsuarios;
+    private javax.swing.JButton btn_GestionarClientes;
+    private javax.swing.JButton btn_GestionarUsuarios;
+    private javax.swing.JButton btn_RegistrarClientes;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
