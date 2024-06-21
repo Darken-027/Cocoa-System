@@ -78,7 +78,7 @@ public class Login extends javax.swing.JFrame {
                 btn_AccederActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_Acceder, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 400, 160, 40));
+        jPanel1.add(btn_Acceder, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 400, 160, 40));
 
         icono_caco.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cacao.png"))); // NOI18N
         jPanel1.add(icono_caco, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 30, 150, 160));

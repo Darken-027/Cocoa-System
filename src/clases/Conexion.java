@@ -15,10 +15,10 @@ public class Conexion {
         try {
 
             Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/cocoa", "root", "3lm3j0rs");
-            
+            System.out.println("CONECTADO A LA BASE DE DATOS");
             return cn;
         } catch (SQLException e) {
-            System.out.println("Error en conexión local " + e);
+            System.out.println("ERROR DE CONEXION LOCAL " + e);
         }
         return (null);
     }
