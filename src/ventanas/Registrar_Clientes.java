@@ -5,15 +5,16 @@
 package ventanas;
 
 import clases.Conexion;
-import clases.FechaRegistroCliente;
 import java.awt.Color;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.util.Calendar;
 import java.util.Date;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
-import javax.swing.JTextField;
+import javax.swing.WindowConstants;
 
 /**
  *
@@ -21,13 +22,28 @@ import javax.swing.JTextField;
  */
 public class Registrar_Clientes extends javax.swing.JFrame {
 
+    String usuario;
+    
     /**
      * Creates new form Registrar_Clientes
      */
     public Registrar_Clientes() {
         initComponents();
+        setIconImage(new ImageIcon(getClass().getResource("/iconocacao.png")).getImage());
+        
+        
+        usuario = Login.usuario;
+        setTitle("Registrar nuevo cliente - Sesión de " + usuario);
+        setSize(560, 498);
+        setResizable(false);
+        setLocationRelativeTo(null);
+        
+        setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        
+        
     }
 
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -125,7 +141,7 @@ public class Registrar_Clientes extends javax.swing.JFrame {
         txt_direccion.setFont(new java.awt.Font("Segoe UI Light", 1, 14)); // NOI18N
         jPanel1.add(txt_direccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 330, 190, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-4, 0, 560, 500));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-4, 0, 570, 500));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -133,9 +149,8 @@ public class Registrar_Clientes extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         
         int validacion = 0;
-        String nombre, cedula, telefono, direccion, cantidad, valor;
-        String fecha = ((JTextField)txtFecha.getDateEditor().getUiComponent()).getText();
-        FechaRegistroCliente frc = new FechaRegistroCliente(fecha);
+        String nombre, cedula, telefono, direccion, cantidad, valor, fecha;
+        Date fechaSeleccionada = txtFecha.getDate();
         
         nombre = txt_nombre.getText().trim();
         cedula = txt_cedula.getText().trim();
@@ -143,6 +158,7 @@ public class Registrar_Clientes extends javax.swing.JFrame {
         direccion = txt_direccion.getText().trim();
         cantidad = txt_cantidad.getText().trim();
         valor = txt_valor.getText().trim();
+        
         
         if(nombre.equals("")){
             txt_nombre.setBackground(Color.red);
@@ -168,6 +184,10 @@ public class Registrar_Clientes extends javax.swing.JFrame {
             txt_valor.setBackground(Color.red);
             validacion++;
         }
+        if(txtFecha.getDate() == null){
+            txtFecha.setBackground(Color.red);
+            validacion++;
+        }
         
         
         if (validacion == 0) {
@@ -185,7 +205,7 @@ public class Registrar_Clientes extends javax.swing.JFrame {
                 pst.setString(5, direccion);
                 pst.setString(6, cantidad);
                 pst.setString(7, valor);
-                pst.setString(8, fecha);
+                pst.setDate(8, new java.sql.Date(fechaSeleccionada.getTime()));
                 
                 pst.executeUpdate();
                 cn.close();
@@ -198,6 +218,7 @@ public class Registrar_Clientes extends javax.swing.JFrame {
                 txt_direccion.setBackground(Color.green);
                 txt_cantidad.setBackground(Color.green);
                 txt_valor.setBackground(Color.green);
+                txtFecha.setBackground(Color.green);
                 
                 JOptionPane.showMessageDialog(null, "Registro exitoso.");
                 this.dispose();

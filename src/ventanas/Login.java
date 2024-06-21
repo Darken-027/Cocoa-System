@@ -5,8 +5,12 @@
 package ventanas;
 
 import clases.Conexion;
+import java.awt.Color;
+import java.awt.Image;
+import java.awt.Toolkit;
 import javax.swing.JOptionPane;
 import java.sql.*;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -21,12 +25,18 @@ public class Login extends javax.swing.JFrame {
     
         public Login() {
         initComponents();
+        setIconImage(new ImageIcon(getClass().getResource("/iconocacao.png")).getImage());
+        
+        
         setSize(420, 537);
         setResizable(false);
         setTitle("Acceso al Sistema");
         setLocationRelativeTo(null);
         
+        
     }
+        
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -113,6 +123,8 @@ public class Login extends javax.swing.JFrame {
                     }                
 
                 } else {
+                    txt_usuario.setBackground(Color.red);
+                    txt_Contraseña.setBackground(Color.red);
                     JOptionPane.showMessageDialog(null, "Datos de acceso incorrectos.");
                     txt_usuario.setText("");
                     txt_Contraseña.setText("");
@@ -123,6 +135,8 @@ public class Login extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "¡¡ERROR al iniciar!!, contacte al administrador.");
             }
         } else {
+            txt_usuario.setBackground(Color.red);
+            txt_Contraseña.setBackground(Color.red);
             JOptionPane.showMessageDialog(null, "Debes llenar todos los campos");
         }
         
