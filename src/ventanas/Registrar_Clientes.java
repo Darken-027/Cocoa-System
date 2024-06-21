@@ -34,7 +34,7 @@ public class Registrar_Clientes extends javax.swing.JFrame {
         
         usuario = Login.usuario;
         setTitle("Registrar nuevo cliente - Sesión de " + usuario);
-        setSize(560, 498);
+        setSize(560, 530);
         setResizable(false);
         setLocationRelativeTo(null);
         
@@ -147,19 +147,18 @@ public class Registrar_Clientes extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
+
         int validacion = 0;
         String nombre, cedula, telefono, direccion, cantidad, valor, fecha;
         Date fechaSeleccionada = txtFecha.getDate();
-        
+
         nombre = txt_nombre.getText().trim();
         cedula = txt_cedula.getText().trim();
         telefono = txt_telefono.getText().trim();
         direccion = txt_direccion.getText().trim();
         cantidad = txt_cantidad.getText().trim();
         valor = txt_valor.getText().trim();
-        
-        
+
         if(nombre.equals("")){
             txt_nombre.setBackground(Color.red);
             validacion++;
@@ -188,16 +187,15 @@ public class Registrar_Clientes extends javax.swing.JFrame {
             txtFecha.setBackground(Color.red);
             validacion++;
         }
-        
-        
+
         if (validacion == 0) {
-            
+
             try {
-                
+
                 Connection cn = Conexion.Conectar();
                 PreparedStatement pst = cn.prepareStatement(
-                        "insert into clientes values (?,?,?,?,?,?,?,?)");
-                
+                    "insert into clientes values (?,?,?,?,?,?,?,?)");
+
                 pst.setInt(1, 0);
                 pst.setString(2, nombre);
                 pst.setString(3, cedula);
@@ -206,12 +204,12 @@ public class Registrar_Clientes extends javax.swing.JFrame {
                 pst.setString(6, cantidad);
                 pst.setString(7, valor);
                 pst.setDate(8, new java.sql.Date(fechaSeleccionada.getTime()));
-                
+
                 pst.executeUpdate();
                 cn.close();
-                
+
                 Limpiar();
-                
+
                 txt_nombre.setBackground(Color.green);
                 txt_cedula.setBackground(Color.green);
                 txt_telefono.setBackground(Color.green);
@@ -219,19 +217,19 @@ public class Registrar_Clientes extends javax.swing.JFrame {
                 txt_cantidad.setBackground(Color.green);
                 txt_valor.setBackground(Color.green);
                 txtFecha.setBackground(Color.green);
-                
+
                 JOptionPane.showMessageDialog(null, "Registro exitoso.");
                 this.dispose();
-                
+
             } catch (SQLException e) {
                 System.out.println("Error en registrar cliente." + e);
                 JOptionPane.showMessageDialog(null, "¡¡ERROR al registrar cliente!!, contacte al administrador.");
             }
-            
+
         } else {
             JOptionPane.showMessageDialog(null, "Debes de llenar todos los campos.");
         }
-        
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

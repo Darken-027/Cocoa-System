@@ -21,22 +21,17 @@ public class Login extends javax.swing.JFrame {
     //Declaracion de variables Globales para enviar datos entre interfaces
     public static String usuario = "";
     String contraseña = "";
-    
-    
-        public Login() {
+
+    public Login() {
         initComponents();
         setIconImage(new ImageIcon(getClass().getResource("/iconocacao.png")).getImage());
-        
-        
+
         setSize(420, 537);
         setResizable(false);
         setTitle("Acceso al Sistema");
         setLocationRelativeTo(null);
-        
-        
+
     }
-        
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -52,9 +47,9 @@ public class Login extends javax.swing.JFrame {
         txt_usuario = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        txt_Contraseña = new javax.swing.JPasswordField();
         btn_Acceder = new javax.swing.JButton();
         icono_caco = new javax.swing.JLabel();
+        txt_Contraseña = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setFocusCycleRoot(false);
@@ -64,7 +59,7 @@ public class Login extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(204, 255, 204));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        txt_usuario.setFont(new java.awt.Font("Segoe UI Emoji", 0, 18)); // NOI18N
+        txt_usuario.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
         jPanel1.add(txt_usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 240, 230, -1));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI Emoji", 0, 18)); // NOI18N
@@ -77,9 +72,6 @@ public class Login extends javax.swing.JFrame {
         jLabel1.setText("Usuario:");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 220, -1, -1));
 
-        txt_Contraseña.setFont(new java.awt.Font("Segoe UI Emoji", 0, 18)); // NOI18N
-        jPanel1.add(txt_Contraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 330, 230, -1));
-
         btn_Acceder.setBackground(new java.awt.Color(204, 255, 255));
         btn_Acceder.setFont(new java.awt.Font("Segoe UI Emoji", 0, 18)); // NOI18N
         btn_Acceder.setText("Acceder");
@@ -88,18 +80,21 @@ public class Login extends javax.swing.JFrame {
                 btn_AccederActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_Acceder, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 400, 160, 40));
+        jPanel1.add(btn_Acceder, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 410, 230, 70));
 
         icono_caco.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cacao.png"))); // NOI18N
         jPanel1.add(icono_caco, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 30, 150, 160));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 420, 540));
+        txt_Contraseña.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
+        jPanel1.add(txt_Contraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 340, 230, -1));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 420, 520));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_AccederActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_AccederActionPerformed
-        
+
         usuario = txt_usuario.getText().trim();
         contraseña = txt_Contraseña.getText().trim();
         if (!usuario.equals("") || !contraseña.equals("")) {
@@ -113,14 +108,14 @@ public class Login extends javax.swing.JFrame {
                 ResultSet rs = pst.executeQuery();
                 if (rs.next()) {
 
-                    String  tipo_nivel = rs.getString("tipo_nivel");
+                    String tipo_nivel = rs.getString("tipo_nivel");
                     String estatus = rs.getString("estatus");
 
                     if (tipo_nivel.equalsIgnoreCase("Administrador") && estatus.equalsIgnoreCase("Activo")) {
                         //dispose(); Hace que el JFrame sea destruido y limpiado por el sistema operativo.
                         dispose();
                         new Administrador().setVisible(true);
-                    }                
+                    }
 
                 } else {
                     txt_usuario.setBackground(Color.red);
@@ -139,7 +134,7 @@ public class Login extends javax.swing.JFrame {
             txt_Contraseña.setBackground(Color.red);
             JOptionPane.showMessageDialog(null, "Debes llenar todos los campos");
         }
-        
+
     }//GEN-LAST:event_btn_AccederActionPerformed
 
     /**

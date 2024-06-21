@@ -12,7 +12,7 @@ import javax.swing.WindowConstants;
  * @author torut
  */
 public class Administrador extends javax.swing.JFrame {
-    
+
     String usuario, nombre_usuario;
     public static int sesion_usuario;
 
@@ -23,16 +23,14 @@ public class Administrador extends javax.swing.JFrame {
         initComponents();
         usuario = Login.usuario;
         sesion_usuario = 1;
-        
-        setSize(651, 546);
+
+        setSize(660, 577);
         setResizable(false);
         setTitle("Administrador - Sesión de " + usuario);
         setLocationRelativeTo(null);
-        
+
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        
-        
-        
+
     }
 
     /**
@@ -120,17 +118,17 @@ public class Administrador extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 546, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 538, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_RegistrarClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_RegistrarClientesActionPerformed
-        
+
         Registrar_Clientes registrar_Clientes = new Registrar_Clientes();
         registrar_Clientes.setVisible(true);
-        
+
     }//GEN-LAST:event_btn_RegistrarClientesActionPerformed
 
     private void btn_GestionarClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_GestionarClientesActionPerformed
