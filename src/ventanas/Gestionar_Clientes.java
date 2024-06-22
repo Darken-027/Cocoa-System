@@ -4,18 +4,90 @@
  */
 package ventanas;
 
+import clases.Conexion;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.ImageIcon;
+import javax.swing.JTable;
+import javax.swing.WindowConstants;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author torut
  */
 public class Gestionar_Clientes extends javax.swing.JFrame {
-
+    String usuario;
+    public static int IDcliente_update = 0;
+    DefaultTableModel modelo = new DefaultTableModel();
     /**
      * Creates new form Gestionar_Clientes
      */
     public Gestionar_Clientes() {
         initComponents();
+        setIconImage(new ImageIcon(getClass().getResource("/iconocacao.png")).getImage());
+        
+        usuario = Login.usuario;
+        
+        setSize(684, 500);
+        setResizable(false);
+        setTitle("Capturista - Sesión de " + usuario);
+        setLocationRelativeTo(null);
+        
+        setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        
+        
+        try {
+            Connection cn = Conexion.Conectar();
+            
+            PreparedStatement pst = cn.prepareStatement(
+                    "select id_cliente, nombre_cliente, mail_cliente, tel_cliente, ultima_modificacion from clientes");
+            
+            ResultSet rs = pst.executeQuery();
+            
+            tbl_Clientes = new JTable(modelo);
+            jScrollPane1.setViewportView(tbl_Clientes);
+            
+            modelo.addColumn(" ");
+            modelo.addColumn("Nombre");
+            modelo.addColumn("em@il");
+            modelo.addColumn("Télefono");
+            modelo.addColumn("Modificado por");
+            
+            while (rs.next()) {
+                Object[] fila = new Object[5];
+                for (int i = 0; i < 5; i++) {
+                    fila[i] = rs.getObject(i + 1);
+                }
+                modelo.addRow(fila);
+            }
+            
+            cn.close();
+            
+        } catch (SQLException e) {
+            System.err.println("Error en el llenado de la tabla.");
+        }
+        
+        tbl_Clientes.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e){
+                int fila_point = tbl_Clientes.rowAtPoint(e.getPoint());
+                int columna_point = 0;
+                
+                if(fila_point > -1){
+                    IDcliente_update = (int)modelo.getValueAt(fila_point, columna_point);
+                    Informacion_Cliente informacion_cliente = new Informacion_Cliente();
+                    informacion_cliente.setVisible(true);                                        
+                }
+            }
+        });
     }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -28,8 +100,10 @@ public class Gestionar_Clientes extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tbl_Clientes = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -37,7 +111,7 @@ public class Gestionar_Clientes extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(204, 255, 204));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tbl_Clientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -48,16 +122,23 @@ public class Gestionar_Clientes extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tbl_Clientes);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 70, 670, 300));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 670, 320));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jLabel1.setText("Clientes registrados");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 20, -1, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 10, -1, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 690, 380));
+        jTextField1.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
+        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 220, -1));
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
+        jLabel2.setText("Buscar");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, -1, -1));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 690, 460));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -99,8 +180,10 @@ public class Gestionar_Clientes extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTable tbl_Clientes;
     // End of variables declaration//GEN-END:variables
 }
