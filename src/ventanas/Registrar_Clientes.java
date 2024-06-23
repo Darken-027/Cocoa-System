@@ -54,7 +54,6 @@ public class Registrar_Clientes extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel2 = new javax.swing.JLabel();
-        txt_nombre = new javax.swing.JTextField();
         txt_cedula = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -70,6 +69,7 @@ public class Registrar_Clientes extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         txt_direccion = new javax.swing.JTextField();
+        txt_nombre = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -77,9 +77,6 @@ public class Registrar_Clientes extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Segoe UI Light", 1, 14)); // NOI18N
         jLabel2.setText("Nombre:");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(35, 93, -1, -1));
-
-        txt_nombre.setFont(new java.awt.Font("Segoe UI Light", 1, 14)); // NOI18N
-        getContentPane().add(txt_nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(35, 121, 190, -1));
 
         txt_cedula.setFont(new java.awt.Font("Segoe UI Light", 1, 14)); // NOI18N
         getContentPane().add(txt_cedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(35, 189, 190, -1));
@@ -140,6 +137,9 @@ public class Registrar_Clientes extends javax.swing.JFrame {
 
         txt_direccion.setFont(new java.awt.Font("Segoe UI Light", 1, 14)); // NOI18N
         jPanel1.add(txt_direccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 330, 190, -1));
+
+        txt_nombre.setFont(new java.awt.Font("Segoe UI Light", 1, 14)); // NOI18N
+        jPanel1.add(txt_nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 120, 190, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-4, 0, 570, 500));
 

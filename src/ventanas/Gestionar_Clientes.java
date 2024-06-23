@@ -114,7 +114,7 @@ public class Gestionar_Clientes extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(204, 255, 204));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        tbl_Clientes.setBackground(new java.awt.Color(0, 153, 153));
+        tbl_Clientes.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         tbl_Clientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},

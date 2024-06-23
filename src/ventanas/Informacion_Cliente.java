@@ -26,32 +26,178 @@ public class Informacion_Cliente extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        txt_direccion = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        txt_telefono = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        txt_cedula = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        txt_nombre = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        txt_cantidad = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        txt_valor = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        txtFecha = new com.toedter.calendar.JDateChooser();
+        btn_ModificarUsuario = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        jLabel1.setText("Informacion Cliente");
+        jPanel1.setBackground(new java.awt.Color(204, 255, 204));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(78, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(257, 257, 257))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(130, 130, 130)
-                .addComponent(jLabel1)
-                .addContainerGap(259, Short.MAX_VALUE))
-        );
+        txt_direccion.setFont(new java.awt.Font("Segoe UI Light", 1, 14)); // NOI18N
+        jPanel1.add(txt_direccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, 190, -1));
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI Light", 1, 14)); // NOI18N
+        jLabel5.setText("Direccion:");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, -1, -1));
+
+        txt_telefono.setFont(new java.awt.Font("Segoe UI Light", 1, 14)); // NOI18N
+        jPanel1.add(txt_telefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 190, 190, -1));
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI Light", 1, 14)); // NOI18N
+        jLabel4.setText("Telefono:");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, -1, -1));
+
+        txt_cedula.setFont(new java.awt.Font("Segoe UI Light", 1, 14)); // NOI18N
+        jPanel1.add(txt_cedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 190, -1));
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI Light", 1, 14)); // NOI18N
+        jLabel3.setText("Cedula:");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, -1, -1));
+
+        txt_nombre.setFont(new java.awt.Font("Segoe UI Light", 1, 14)); // NOI18N
+        jPanel1.add(txt_nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, 190, -1));
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI Light", 1, 14)); // NOI18N
+        jLabel2.setText("Nombre:");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, -1, -1));
+
+        jLabel7.setFont(new java.awt.Font("Segoe UI Light", 1, 14)); // NOI18N
+        jLabel7.setText("Cantidad/Kilos:");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 20, -1, -1));
+
+        txt_cantidad.setFont(new java.awt.Font("Segoe UI Light", 1, 14)); // NOI18N
+        jPanel1.add(txt_cantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 50, 190, -1));
+
+        jLabel10.setFont(new java.awt.Font("Segoe UI Light", 1, 14)); // NOI18N
+        jLabel10.setText("Valor del Kilo:");
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 90, -1, -1));
+
+        txt_valor.setFont(new java.awt.Font("Segoe UI Light", 1, 14)); // NOI18N
+        jPanel1.add(txt_valor, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 120, 190, -1));
+
+        jLabel9.setFont(new java.awt.Font("Segoe UI Light", 1, 14)); // NOI18N
+        jLabel9.setText("Fecha");
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 160, -1, -1));
+
+        txtFecha.setDateFormatString("yyyy-MM-dd");
+        txtFecha.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
+        jPanel1.add(txtFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 190, 190, 30));
+
+        btn_ModificarUsuario.setBackground(new java.awt.Color(153, 255, 204));
+        btn_ModificarUsuario.setFont(new java.awt.Font("Segoe UI Historic", 1, 18)); // NOI18N
+        btn_ModificarUsuario.setText("Registrar Cliente");
+        btn_ModificarUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_ModificarUsuarioActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_ModificarUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 270, 240, 140));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 650, 440));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btn_ModificarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ModificarUsuarioActionPerformed
+
+        int validacion = 0;
+        String nombre, cedula, telefono, direccion, cantidad, valor, fecha;
+        Date fechaSeleccionada = txtFecha.getDate();
+
+        nombre = txt_nombre.getText().trim();
+        cedula = txt_cedula.getText().trim();
+        telefono = txt_telefono.getText().trim();
+        direccion = txt_direccion.getText().trim();
+        cantidad = txt_cantidad.getText().trim();
+        valor = txt_valor.getText().trim();
+
+        if(nombre.equals("")){
+            txt_nombre.setBackground(Color.red);
+            validacion++;
+        }
+        if(cedula.equals("")){
+            txt_cedula.setBackground(Color.red);
+            validacion++;
+        }
+        if(telefono.equals("")){
+            txt_telefono.setBackground(Color.red);
+            validacion++;
+        }
+        if(direccion.equals("")){
+            txt_direccion.setBackground(Color.red);
+            validacion++;
+        }
+        if(cantidad.equals("")){
+            txt_cantidad.setBackground(Color.red);
+            validacion++;
+        }
+        if(valor.equals("")){
+            txt_valor.setBackground(Color.red);
+            validacion++;
+        }
+        if(txtFecha.getDate() == null){
+            txtFecha.setBackground(Color.red);
+            validacion++;
+        }
+
+        if (validacion == 0) {
+
+            try {
+
+                Connection cn = Conexion.Conectar();
+                PreparedStatement pst = cn.prepareStatement(
+                    "insert into clientes values (?,?,?,?,?,?,?,?)");
+
+                pst.setInt(1, 0);
+                pst.setString(2, nombre);
+                pst.setString(3, cedula);
+                pst.setString(4, telefono);
+                pst.setString(5, direccion);
+                pst.setString(6, cantidad);
+                pst.setString(7, valor);
+                pst.setDate(8, new java.sql.Date(fechaSeleccionada.getTime()));
+
+                pst.executeUpdate();
+                cn.close();
+
+                Limpiar();
+
+                txt_nombre.setBackground(Color.green);
+                txt_cedula.setBackground(Color.green);
+                txt_telefono.setBackground(Color.green);
+                txt_direccion.setBackground(Color.green);
+                txt_cantidad.setBackground(Color.green);
+                txt_valor.setBackground(Color.green);
+                txtFecha.setBackground(Color.green);
+
+                JOptionPane.showMessageDialog(null, "Registro exitoso.");
+                this.dispose();
+
+            } catch (SQLException e) {
+                System.out.println("Error en registrar cliente." + e);
+                JOptionPane.showMessageDialog(null, "¡¡ERROR al registrar cliente!!, contacte al administrador.");
+            }
+
+        } else {
+            JOptionPane.showMessageDialog(null, "Debes de llenar todos los campos.");
+        }
+    }//GEN-LAST:event_btn_ModificarUsuarioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -89,6 +235,21 @@ public class Informacion_Cliente extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton btn_ModificarUsuario;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
+    private com.toedter.calendar.JDateChooser txtFecha;
+    private javax.swing.JTextField txt_cantidad;
+    private javax.swing.JTextField txt_cedula;
+    private javax.swing.JTextField txt_direccion;
+    private javax.swing.JTextField txt_nombre;
+    private javax.swing.JTextField txt_telefono;
+    private javax.swing.JTextField txt_valor;
     // End of variables declaration//GEN-END:variables
 }
