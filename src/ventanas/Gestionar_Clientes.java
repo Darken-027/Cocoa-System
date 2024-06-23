@@ -33,7 +33,7 @@ public class Gestionar_Clientes extends javax.swing.JFrame {
         
         usuario = Login.usuario;
         
-        setSize(684, 500);
+        setSize(770, 456);
         setResizable(false);
         setTitle("Capturista - Sesión de " + usuario);
         setLocationRelativeTo(null);
@@ -45,7 +45,7 @@ public class Gestionar_Clientes extends javax.swing.JFrame {
             Connection cn = Conexion.Conectar();
             
             PreparedStatement pst = cn.prepareStatement(
-                    "select id_cliente, nombre_cliente, mail_cliente, tel_cliente, ultima_modificacion from clientes");
+                    "select id, nombre_cliente, cedula_cliente, telefono_cliente, direccion_cliente, cantidad_kilos, valor_kilo, fecha_registro FROM clientes");
             
             ResultSet rs = pst.executeQuery();
             
@@ -54,13 +54,16 @@ public class Gestionar_Clientes extends javax.swing.JFrame {
             
             modelo.addColumn(" ");
             modelo.addColumn("Nombre");
-            modelo.addColumn("em@il");
+            modelo.addColumn("Cedula");
             modelo.addColumn("Télefono");
-            modelo.addColumn("Modificado por");
+            modelo.addColumn("Direccion");
+            modelo.addColumn("Cantidad en Kilos");
+            modelo.addColumn("Valor Kilo");
+            modelo.addColumn("Fecha");
             
             while (rs.next()) {
-                Object[] fila = new Object[5];
-                for (int i = 0; i < 5; i++) {
+                Object[] fila = new Object[8];
+                for (int i = 0; i < 8; i++) {
                     fila[i] = rs.getObject(i + 1);
                 }
                 modelo.addRow(fila);
@@ -111,6 +114,7 @@ public class Gestionar_Clientes extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(204, 255, 204));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        tbl_Clientes.setBackground(new java.awt.Color(0, 153, 153));
         tbl_Clientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -124,7 +128,7 @@ public class Gestionar_Clientes extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tbl_Clientes);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 670, 320));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 760, 320));
 
         jLabel1.setBackground(new java.awt.Color(0, 0, 0));
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
@@ -138,7 +142,7 @@ public class Gestionar_Clientes extends javax.swing.JFrame {
         jLabel2.setText("Buscar");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, -1, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 690, 460));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 760, 460));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
